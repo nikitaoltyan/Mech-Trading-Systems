@@ -1,6 +1,6 @@
 import numpy as np
 
-class HeadWithShoulders:
+class head_with_shoulders:
 
   def find_highs(data, rang):
     lenth = len(data["<OPEN>"])
