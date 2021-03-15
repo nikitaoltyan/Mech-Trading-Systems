@@ -1,6 +1,4 @@
 import pandas as pd
-from HeadWithShoulders import head_with_shoulders
-
 
 class triangle:
 
