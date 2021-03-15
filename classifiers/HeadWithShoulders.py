@@ -2,7 +2,7 @@ import numpy as np
 
 class head_with_shoulders:
 
-  def find_highs(data, rang):
+  def find_highs(self, data, rang):
     lenth = len(data["<OPEN>"])
     result = []
     for day in range(rang, lenth-rang):
@@ -10,7 +10,7 @@ class head_with_shoulders:
         result.append(day)
     return result
   
-  def find_lows(data, rang):
+  def find_lows(self, data, rang):
     lenth = len(data["<OPEN>"])
     result = []
     for day in range(rang, lenth-rang):
@@ -18,10 +18,10 @@ class head_with_shoulders:
         result.append(day)
     return result
   
-  def head_with_shoulders(data, rang):
+  def head_with_shoulders(self, data, rang):
     highs = data["<HIGH>"]
-    highs_indexes = find_highs(data=data, rang=rang)
-    lows = find_lows(data=data, rang=rang)
+    highs_indexes = self.find_highs(data=data, rang=rang)
+    lows = self.find_lows(data=data, rang=rang)
     result = []
     shoulders = []
     for item in range(1, len(highs_indexes)-1):
