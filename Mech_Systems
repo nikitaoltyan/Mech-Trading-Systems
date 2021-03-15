@@ -3,10 +3,10 @@
   "nbformat_minor": 0,
   "metadata": {
     "colab": {
-      "name": "Механика.ipynb",
+      "name": "Mech_Systems",
       "provenance": [],
       "collapsed_sections": [],
-      "authorship_tag": "ABX9TyN3dJ5UFnKz6lanoMAPn8iu",
+      "authorship_tag": "ABX9TyPzDEVMr0pgQ1aT2Ykp1EB0",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -28,10 +28,39 @@
     {
       "cell_type": "code",
       "metadata": {
-        "id": "tG9Ee1hc_Fqo"
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "oLGJ0T9Zw7kL",
+        "outputId": "9c6d9c64-91bb-4626-8e1d-1806cbddd100"
       },
       "source": [
-        "import pandas as pd\r\n",
+        "# Project cloning\n",
+        "!git clone https://github.com/nikitaoltyan/Mech-Trading-Systems.git"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Cloning into 'Mech-Trading-Systems'...\n",
+            "remote: Enumerating objects: 11, done.\u001b[K\n",
+            "remote: Counting objects: 100% (11/11), done.\u001b[K\n",
+            "remote: Compressing objects: 100% (8/8), done.\u001b[K\n",
+            "remote: Total 11 (delta 0), reused 0 (delta 0), pack-reused 0\u001b[K\n",
+            "Unpacking objects: 100% (11/11), done.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ChZQskMSw9Fz"
+      },
+      "source": [
+        "import pandas as pd\n",
         "import plotly.graph_objects as go"
       ],
       "execution_count": null,
