@@ -3,6 +3,10 @@ import numpy as np
 class head_with_shoulders:
 
   def find_highs(self, data, rang):
+    """
+    That function finds local price highs on the given range: (prise-rang, price+rang)
+    Returns array with that highs.
+    """
     lenth = len(data["<OPEN>"])
     result = []
     for day in range(rang, lenth-rang):
@@ -10,7 +14,12 @@ class head_with_shoulders:
         result.append(day)
     return result
   
+  
   def find_lows(self, data, rang):
+    """
+    That function finds local price lows on the given range: (prise-rang, price+rang)
+    Returns array with that lows.
+    """
     lenth = len(data["<OPEN>"])
     result = []
     for day in range(rang, lenth-rang):
@@ -18,7 +27,12 @@ class head_with_shoulders:
         result.append(day)
     return result
   
+  
   def head_with_shoulders(self, data, rang):
+    """
+    That function finds simplier Head With Shoulders pattern.
+    Returns array with Heads and array of turples with "left" and "right" shoulder respectively.
+    """
     highs = data["<HIGH>"]
     highs_indexes = self.find_highs(data=data, rang=rang)
     lows = self.find_lows(data=data, rang=rang)
