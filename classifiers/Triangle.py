@@ -4,8 +4,11 @@ from HeadWithShoulders import head_with_shoulders
 
 class triangle:
   
+  __init__(self):
+    self.hws = head_with_shoulders()
+  
   def find_triangle(self, data, rang):
-    start_highs = hws.find_highs(data, rang)
+    start_highs = self.hws.find_highs(data, rang)
     highs = list(data["<HIGH>"])
     lows = list(data["<LOW>"])
     result = []
