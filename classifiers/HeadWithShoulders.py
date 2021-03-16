@@ -1,6 +1,20 @@
 import numpy as np
 
 class head_with_shoulders:
+  
+  def draw_plot(self, data, start=0, end=1):
+    """
+    Function draws candle chart for given data: OPEN, HIGH, LOW, CLOSE is required.
+    Start and end are Int number for wanted data range chart.
+    """
+    plot=[go.Candlestick(x=[i for i in range (0, len(data))][start:end],
+            open=data['<OPEN>'][start:end],
+            high=data['<HIGH>'][start:end],
+            low=data['<LOW>'][start:end],
+            close=data['<CLOSE>'][start:end])]
+    figSignal = go.Figure(data=plot)
+    figSignal.show()
+  
 
   def find_highs(self, data, rang):
     """
@@ -52,3 +66,8 @@ class head_with_shoulders:
           result.append(highs_indexes[item])
           shoulders.append((highs_indexes[item-1], highs_indexes[item+1]))
     return result, shoulders
+
+  
+  def draw_heads_with_shoulders(self, data, shoulders):
+    for shoulder in shoulders:
+      self.draw_plot(data, shoulder[0]-10, shoulder[1]+10)
