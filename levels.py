@@ -38,25 +38,25 @@ class levels:
 
     return resistance
 
-  def levels(self, data):
-    """
-    finds key levels 
-    returns: support_levels, resistance_levels
-    """
-    support = self.find_support(data=data)
-    resistance = self.find_resistance(data=data)
+#   def levels(self, data):
+#     """
+#     finds key levels 
+#     returns: support_levels, resistance_levels
+#     """
+#     support = self.find_support(data=data)
+#     resistance = self.find_resistance(data=data)
 
-    support_levels = []
-    resistance_levels = []
+#     support_levels = []
+#     resistance_levels = []
 
-    for i in range(len(support)):
-      l = support[i][1]
-      if np.sum([abs(l-x) < np.mean(data['<HIGH>'] - data['<LOW>']) for x in support_levels]) == 0:
-        support_levels.append((i,l))
+#     for i in range(len(support)):
+#       l = support[i][1]
+#       if np.sum([abs(l-x) < np.mean(data['<HIGH>'] - data['<LOW>']) for x in support_levels]) == 0:
+#         support_levels.append((i,l))
       
-    for i in range(len(resistance)):
-      l = resistance[i][1]
-      if np.sum([abs(l-x) < np.mean(data['<HIGH>'] - data['<LOW>']) for x in resistance_levels]) == 0:
-        resistance_levels.append((i,l))
+#     for i in range(len(resistance)):
+#       l = resistance[i][1]
+#       if np.sum([abs(l-x) < np.mean(data['<HIGH>'] - data['<LOW>']) for x in resistance_levels]) == 0:
+#         resistance_levels.append((i,l))
 
-    return support_levels, resistance_levels
+#     return support_levels, resistance_levels
