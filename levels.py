@@ -1,6 +1,6 @@
 import numpy as np
 
-class Levels:
+class levels:
 
   def find_support(self, data):
     """
@@ -38,13 +38,13 @@ class Levels:
 
    return resistance
 
- def key_levels(self, data):
+ def levels(self, data):
    """
    finds key levels 
    returns: support_levels, resistance_levels
    """
-   support = self.find_support(data)
-   resistance = self.find_resistance(data)
+   support = self.find_support(data=data)
+   resistance = self.find_resistance(data=data)
 
    support_levels = []
    resistance_levels = []
