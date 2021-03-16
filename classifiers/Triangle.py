@@ -1,6 +1,6 @@
 import pandas as pd
 
-def find_highs(self, data, rang):
+def find_highs(data, rang):
   """
   That function finds local price highs on the given range: (prise-rang, price+rang)
   Returns array with that highs.
@@ -13,7 +13,7 @@ def find_highs(self, data, rang):
   return result
   
   
-def find_triangle(self, data, rang):
+def find_triangle(data, rang):
   start_highs = find_highs(data, rang)
   highs = list(data["<HIGH>"])
   lows = list(data["<LOW>"])
