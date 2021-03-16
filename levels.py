@@ -48,8 +48,8 @@ class Levels:
     finds key levels 
     returns: support_levels, resistance_levels
     """
-    support = find_support(data)
-    resistance = find_resistance(data)
+    support = self.find_support(data)
+    resistance = self.find_resistance(data)
 
     support_levels = []
     resistance_levels = []
