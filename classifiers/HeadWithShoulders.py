@@ -28,7 +28,7 @@ class head_with_shoulders:
     return result
   
   
-  def head_with_shoulders(self, data, rang):
+  def find_head_with_shoulders(self, data, rang):
     """
     That function finds simplier Head With Shoulders pattern.
     Returns array with Heads and array of turples with "left" and "right" shoulder respectively.
