@@ -14,6 +14,12 @@ def find_highs(data, rang):
   
   
 def find_triangle(data, rang):
+  """
+  That function finds simplier triangle pattern. There's condition: after the highest started
+  peak and the next the lowest peak is a middle peak – its between the last two, but the highest
+  in the nearest area.
+  Returns array with turples - that three peaks accordingly.
+  """
   start_highs = find_highs(data, rang)
   highs = list(data["<HIGH>"])
   lows = list(data["<LOW>"])
