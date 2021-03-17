@@ -68,7 +68,7 @@ class levels:
 
 class levelplot:
   
-  def __init(self, levels):
+  def __init__(self, levels):
     # Function for finding support and resistance levels.
     self.levels = levels
 
