@@ -81,21 +81,23 @@ class levelplot:
     return fig
 
   
-  def support_plot(self, data, start = 0, end = 1):
+  def support_plot(self, data, levels, start = 0, end = 1):
     """
     adds support levels
     """
     fig = self.draw_plot(data, start, end)
-    for i in l.find_support(data):
-      fig.add_trace(go.Scatter(x = list(range(i[0], end)), y = [i[1] for x in range(end-i[0]+1)]))
+    #for i in l.find_support(data):
+    for level in levels:
+      fig.add_trace(go.Scatter(x = list(range(level[0], end)), y = [level[1] for x in range(end-level[0]+1)]))
     fig.show()
 
     
-  def resistance_plot(self, data, start = 0, end = 1):
+  def resistance_plot(self, data, levels, start = 0, end = 1):
     """
     adds resistance levels
     """
     fig = self.draw_plot(data, start, end)
-    for i in l.find_resistance(data):
-      fig.add_trace(go.Scatter(x = list(range(i[0], end)), y = [i[1] for x in range(end-i[0]+1)]))
+    #for i in l.find_resistance(data):
+    for level in levels:
+      fig.add_trace(go.Scatter(x = list(range(level[0], end)), y = [level[1] for x in range(end-level[0]+1)]))
     fig.show()
