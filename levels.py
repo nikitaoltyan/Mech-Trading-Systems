@@ -98,7 +98,7 @@ class levelplot:
     fig.show()
 
     
-  def resistance_plot(self, data, levels, start = 0, end = 1):
+  def resistance_plot(self, data, start = 0, end = 1):
     """
     adds resistance levels
     """
