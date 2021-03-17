@@ -1,4 +1,6 @@
 import numpy as np
+import plotly.graph_objects as go
+
 
 class levels:
 
@@ -17,9 +19,10 @@ class levels:
         supp_close.append(data['<LOW>'][i])
 
     support = [(i,j) for i,j in zip(supp_points, supp_close)]
-
     return support
 
+  
+  
   def find_resistance(self, data):
     """
     finds resistance levels
@@ -35,9 +38,9 @@ class levels:
         res_close.append(data['<HIGH>'][i])
 
     resistance = [(i,j) for i,j in zip(res_points, res_close)]
-
     return resistance
 
+  
 #   def levels(self, data):
 #     """
 #     finds key levels 
@@ -60,3 +63,39 @@ class levels:
 #         resistance_levels.append((i,l))
 
 #     return support_levels, resistance_levels
+
+
+
+class levelplot:
+
+  def draw_plot(self, data, start=0, end=1):
+    """
+    draws a candlestick plot
+    """
+    plot=[go.Candlestick(x=[i for i in range (0, len(data))][start:end],
+            open=data['<OPEN>'][start:end],
+            high=data['<HIGH>'][start:end],
+            low=data['<LOW>'][start:end],
+            close=data['<CLOSE>'][start:end])]
+    fig = go.Figure(data=plot)
+    return fig
+
+  
+  def support_plot(self, data, start = 0, end = 1):
+    """
+    adds support levels
+    """
+    fig = self.draw_plot(data, start, end)
+    for i in l.find_support(data):
+      fig.add_trace(go.Scatter(x = list(range(i[0], end)), y = [i[1] for x in range(end-i[0]+1)]))
+    fig.show()
+
+    
+  def resistance_plot(self, data, start = 0, end = 1):
+    """
+    adds resistance levels
+    """
+    fig = self.draw_plot(data, start, end)
+    for i in l.find_resistance(data):
+      fig.add_trace(go.Scatter(x = list(range(i[0], end)), y = [i[1] for x in range(end-i[0]+1)]))
+    fig.show()
