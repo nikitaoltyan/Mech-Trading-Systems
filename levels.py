@@ -66,8 +66,13 @@ class levels:
 
 
 
-class levelplot:
+class levelplot(levels):
+  
+  def __init(self, levels):
+    # Function for finding support and resistance levels.
+    self.levels = levels
 
+    
   def draw_plot(self, data, start=0, end=1):
     """
     draws a candlestick plot
@@ -81,13 +86,14 @@ class levelplot:
     return fig
 
   
-  def support_plot(self, data, levels, start = 0, end = 1):
+  def support_plot(self, data, start = 0, end = 1):
     """
     adds support levels
     """
     fig = self.draw_plot(data, start, end)
+    lvls = self.levels.find_support(data)
     #for i in l.find_support(data):
-    for level in levels:
+    for level in lvls:
       fig.add_trace(go.Scatter(x = list(range(level[0], end)), y = [level[1] for x in range(end-level[0]+1)]))
     fig.show()
 
@@ -97,7 +103,8 @@ class levelplot:
     adds resistance levels
     """
     fig = self.draw_plot(data, start, end)
+    lvls = self.levels.find_resistance(data)
     #for i in l.find_resistance(data):
-    for level in levels:
+    for level in lvls:
       fig.add_trace(go.Scatter(x = list(range(level[0], end)), y = [level[1] for x in range(end-level[0]+1)]))
     fig.show()
