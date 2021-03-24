@@ -128,10 +128,10 @@ class TradingBot:
 
     def openRightPosition(self, index, position, money, curIndex, aS, bS, aB, bB):
         if position == "Sell":
-            money, profit, closeIndex = self.findCloseSellPosition(index, money, curIndex, aS, bS, data.shape[0])
+            money, profit, closeIndex = self.findCloseSellPosition(index, money, curIndex, aS, bS, self.data.shape[0])
             return (money, profit, closeIndex)
         else:
-            money, profit, closeIndex = self.findCloseBuyPosition(index, money, curIndex, aB, bB, data.shape[0])
+            money, profit, closeIndex = self.findCloseBuyPosition(index, money, curIndex, aB, bB, self.data.shape[0])
             return (money, profit, closeIndex)
 
     
