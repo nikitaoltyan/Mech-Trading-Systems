@@ -1,5 +1,6 @@
 import numpy as np
 from levels import levels
+from Trend import find_rising_trend_lines, find_decreasing_trend_lines
 
 class TradingBot:
 
