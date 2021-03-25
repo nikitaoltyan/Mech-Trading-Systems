@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from levels import levels
 from Trend import find_rising_trend_lines, find_decreasing_trend_lines
 
@@ -164,3 +165,88 @@ class TradingBot:
             print(f"Max profit: {max(results)} was received by alphas and betas: {results[max(results)]}")
         # Return alphaSell, betaSell, alphaBuy, betaBuy
         return results[max(results)]
+    
+    
+    def visualizeHyperparamsDistribution(self):
+        alphasSell = [0, 0.1]
+        betasSell = [0, 0.1]
+        alphasBuy = [0, 0.1]
+        betasBuy = [0, 0.1]
+        results = {}
+
+        for iter in range (1024):
+            alphaSell = np.random.uniform(alphasSell[0], alphasSell[1])
+            betaSell = np.random.uniform(betasSell[0], betasSell[1])
+            alphaBuy = np.random.uniform(alphasBuy[0], alphasBuy[1])
+            betaBuy = np.random.uniform(betasBuy[0], betasBuy[1])
+
+            money = 100000
+            startMoney = money
+            currentIndex = 0
+            for index in sorted(self.useDictinary):
+                currentMoney, _, closeIndex = self.openRightPosition(index, self.useDictinary[index], money, currentIndex,
+                                                                            alphaSell, betaSell, alphaBuy, betaBuy)
+                money = currentMoney
+                currentIndex = closeIndex
+            results[(money-startMoney)/money] = (alphaSell, betaSell, alphaBuy, betaBuy)
+            
+        print(f"Max profit %: {max(results)} was received by alphas and betas: {results[max(results)]}")
+        
+        aS_scatter = [results[i][0] for i in results]
+        bS_scatter = [results[i][1] for i in results]
+        aB_scatter = [results[i][2] for i in results]
+        bB_scatter = [results[i][3] for i in results]
+
+        marker_size = 100
+        
+        colors = [x for x in results]
+        plt.subplot(2, 1, 1)
+        plt.tight_layout(pad=3)
+        plt.scatter(aS_scatter, bS_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
+        plt.colorbar()
+        plt.xlabel('Alpha Sell')
+        plt.ylabel('Beta Sell')
+        plt.title('Profit (%) distribution')
+
+        colors = [x for x in results]
+        plt.subplot(2, 1, 2)
+        plt.scatter(aB_scatter, bB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
+        plt.colorbar()
+        plt.xlabel('Alpha Buy')
+        plt.ylabel('Beta Buy')
+        plt.title('Profit (%) distribution')
+        
+        colors = [x for x in results]
+        plt.subplot(2, 1, 3)
+        plt.tight_layout(pad=3)
+        plt.scatter(aS_scatter, aB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
+        plt.colorbar()
+        plt.xlabel('Alpha Sell')
+        plt.ylabel('Alpha Buy')
+        plt.title('Profit (%) distribution')
+
+        colors = [x for x in results]
+        plt.subplot(2, 1, 4)
+        plt.scatter(bS_scatter, bB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
+        plt.colorbar()
+        plt.xlabel('Beta Sell')
+        plt.ylabel('Beta Buy')
+        plt.title('Profit (%) distribution')
+        
+        colors = [x for x in results]
+        plt.subplot(2, 1, 5)
+        plt.tight_layout(pad=3)
+        plt.scatter(aS_scatter, bB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
+        plt.colorbar()
+        plt.xlabel('Alpha Sell')
+        plt.ylabel('Beta Buy')
+        plt.title('Profit (%) distribution')
+
+        colors = [x for x in results]
+        plt.subplot(2, 1, 6)
+        plt.scatter(aB_scatter, bS_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
+        plt.colorbar()
+        plt.xlabel('Alpha Buy')
+        plt.ylabel('Beta Sell')
+        plt.title('Profit (%) distribution')
+        plt.show()
