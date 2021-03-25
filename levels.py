@@ -14,8 +14,7 @@ class levels:
     supp_close = []
 
     for i in range(2, data.shape[0]-2):
-        if (data['<LOW>'][i] < data['<LOW>'][i-1]) and (data['<LOW>'][i] < data['<LOW>'][i+1]) 
-                  and (data['<LOW>'][i+1] < data['<LOW>'][i+2]) and (data['<LOW>'][i-1] < data['<LOW>'][i-2]):
+        if (data['<LOW>'][i] < data['<LOW>'][i-1]) and (data['<LOW>'][i] < data['<LOW>'][i+1]) and (data['<LOW>'][i+1] < data['<LOW>'][i+2]) and (data['<LOW>'][i-1] < data['<LOW>'][i-2]):
             supp_points.append(i)
             supp_close.append(data['<LOW>'][i])
 
@@ -34,8 +33,7 @@ class levels:
     res_close = []
 
     for i in range(2, data.shape[0]-2):
-        if (data['<HIGH>'][i] > data['<HIGH>'][i-1]) and (data['<HIGH>'][i] > data['<HIGH>'][i+1])
-                and (data['<HIGH>'][i+1] > data['<HIGH>'][i+2]) and (data['<HIGH>'][i-1] > data['<HIGH>'][i-2]):
+        if (data['<HIGH>'][i] > data['<HIGH>'][i-1]) and (data['<HIGH>'][i] > data['<HIGH>'][i+1]) and (data['<HIGH>'][i+1] > data['<HIGH>'][i+2]) and (data['<HIGH>'][i-1] > data['<HIGH>'][i-2]):
             res_points.append(i)
             res_close.append(data['<HIGH>'][i])
 
