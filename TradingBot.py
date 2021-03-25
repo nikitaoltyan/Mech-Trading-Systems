@@ -162,7 +162,7 @@ class TradingBot:
             if (showProcess):
                 print(f"Iter: {iter}, profit: {money-startMoney}, coefs: {alphaSell, betaSell, alphaBuy, betaBuy}")
         if (showProcess):
-            print(f"Max profit: {max(results)} was received by alphas and betas: {results[max(results)]}")
+            print(f"Max profit: {max(results)} for $100k start money was received by alphas and betas: {results[max(results)]}")
         # Return alphaSell, betaSell, alphaBuy, betaBuy
         return results[max(results)]
     
@@ -174,7 +174,7 @@ class TradingBot:
         betasBuy = [0, 0.1]
         results = {}
 
-        for iter in range (1024):
+        for iter in range (1500):
             alphaSell = np.random.uniform(alphasSell[0], alphasSell[1])
             betaSell = np.random.uniform(betasSell[0], betasSell[1])
             alphaBuy = np.random.uniform(alphasBuy[0], alphasBuy[1])
@@ -190,7 +190,7 @@ class TradingBot:
                 currentIndex = closeIndex
             results[(money-startMoney)/money] = (alphaSell, betaSell, alphaBuy, betaBuy)
             
-        print(f"Max profit %: {max(results)} was received by alphas and betas: {results[max(results)]}")
+        print(f"Max profit %: {max(results)*100} was received by alphas and betas: {results[max(results)]}")
         
         aS_scatter = [results[i][0] for i in results]
         bS_scatter = [results[i][1] for i in results]
@@ -200,50 +200,48 @@ class TradingBot:
         marker_size = 100
         
         colors = [x for x in results]
-        plt.subplot(2, 1, 1)
-        plt.tight_layout(pad=3)
         plt.scatter(aS_scatter, bS_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
         plt.colorbar()
         plt.xlabel('Alpha Sell')
         plt.ylabel('Beta Sell')
         plt.title('Profit (%) distribution')
+        plt.show()
 
         colors = [x for x in results]
-        plt.subplot(2, 1, 2)
         plt.scatter(aB_scatter, bB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
         plt.colorbar()
         plt.xlabel('Alpha Buy')
         plt.ylabel('Beta Buy')
         plt.title('Profit (%) distribution')
+        plt.show()
         
         colors = [x for x in results]
-        plt.subplot(2, 1, 3)
         plt.tight_layout(pad=3)
         plt.scatter(aS_scatter, aB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
         plt.colorbar()
         plt.xlabel('Alpha Sell')
         plt.ylabel('Alpha Buy')
         plt.title('Profit (%) distribution')
+        plt.show()
 
         colors = [x for x in results]
-        plt.subplot(2, 1, 4)
         plt.scatter(bS_scatter, bB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
         plt.colorbar()
         plt.xlabel('Beta Sell')
         plt.ylabel('Beta Buy')
         plt.title('Profit (%) distribution')
+        plt.show()
         
         colors = [x for x in results]
-        plt.subplot(2, 1, 5)
         plt.tight_layout(pad=3)
         plt.scatter(aS_scatter, bB_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
         plt.colorbar()
         plt.xlabel('Alpha Sell')
         plt.ylabel('Beta Buy')
         plt.title('Profit (%) distribution')
+        plt.show()
 
         colors = [x for x in results]
-        plt.subplot(2, 1, 6)
         plt.scatter(aB_scatter, bS_scatter, marker_size, c=colors, cmap=plt.cm.coolwarm)
         plt.colorbar()
         plt.xlabel('Alpha Buy')
