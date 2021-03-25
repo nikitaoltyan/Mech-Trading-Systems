@@ -13,10 +13,11 @@ class levels:
     supp_points = []
     supp_close = []
 
-    for i in range(1, data.shape[0]-1):
-      if data['<LOW>'][i] < data['<LOW>'][i-1] and data['<LOW>'][i] < data['<LOW>'][i+1] and data['<LOW>'][i+1] < data['<LOW>'][i+2] and data['<LOW>'][i-1] < data['<LOW>'][i-2]:
-        supp_points.append(i)
-        supp_close.append(data['<LOW>'][i])
+    for i in range(2, data.shape[0]-2):
+        if (data['<LOW>'][i] < data['<LOW>'][i-1]) and (data['<LOW>'][i] < data['<LOW>'][i+1]) 
+                  and (data['<LOW>'][i+1] < data['<LOW>'][i+2]) and (data['<LOW>'][i-1] < data['<LOW>'][i-2]):
+            supp_points.append(i)
+            supp_close.append(data['<LOW>'][i])
 
     support = [(i,j) for i,j in zip(supp_points, supp_close)]
     return support
@@ -32,10 +33,11 @@ class levels:
     res_points = []
     res_close = []
 
-    for i in range(1, data.shape[0]-1):
-      if data['<HIGH>'][i] > data['<HIGH>'][i-1] and data['<HIGH>'][i] > data['<HIGH>'][i+1] and data['<HIGH>'][i+1] > data['<HIGH>'][i+2] and data['<HIGH>'][i-1] > data['<HIGH>'][i-2]:
-        res_points.append(i)
-        res_close.append(data['<HIGH>'][i])
+    for i in range(2, data.shape[0]-2):
+        if (data['<HIGH>'][i] > data['<HIGH>'][i-1]) and (data['<HIGH>'][i] > data['<HIGH>'][i+1])
+                and (data['<HIGH>'][i+1] > data['<HIGH>'][i+2]) and (data['<HIGH>'][i-1] > data['<HIGH>'][i-2]):
+            res_points.append(i)
+            res_close.append(data['<HIGH>'][i])
 
     resistance = [(i,j) for i,j in zip(res_points, res_close)]
     return resistance
