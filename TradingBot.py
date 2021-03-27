@@ -109,10 +109,10 @@ class TradingBot:
         commission += round(sharesBought * self.close[index] * self.commission, 5)
         profit = round(sharesBought*openPrice - sharesBought*self.close[index] - commission, 2)
         returnMoney = profit + sharesBought*self.close[index] + rest
-        print(f"Commision: {commission}")
-        print(f"Shares bought: {sharesBought}")
-        print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
-        print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
+        #print(f"Commision: {commission}")
+        #print(f"Shares bought: {sharesBought}")
+        #print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
+        #print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
         return (returnMoney, profit, index)
 
 
@@ -134,10 +134,10 @@ class TradingBot:
         commission += round(sharesBought * self.close[index] * self.commission, 5)
         profit = round(sharesBought*self.close[index] - sharesBought*openPrice - commission, 2)
         returnMoney = profit + sharesBought*self.close[index] + rest
-        print(f"Commision: {commission}")
-        print(f"Shares bought: {sharesBought}")
-        print(f"Open Buy index {openIndex} and price {openPrice}, rest {rest}, close index {index} and price {self.close[index]}")
-        print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
+        #print(f"Commision: {commission}")
+        #print(f"Shares bought: {sharesBought}")
+        #print(f"Open Buy index {openIndex} and price {openPrice}, rest {rest}, close index {index} and price {self.close[index]}")
+        #print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
         return (returnMoney, profit, index)
 
 
