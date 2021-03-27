@@ -112,6 +112,7 @@ class TradingBot:
         print(f"Commision: {commission}")
         print(f"Shares bought: {sharesBought}")
         print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
+        print(f"Current money {money}, with the profit for the deal: {profit}")
         return (money, profit, index)
 
 
@@ -135,7 +136,8 @@ class TradingBot:
         money = profit + money + rest
         print(f"Commision: {commission}")
         print(f"Shares bought: {sharesBought}")
-        print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
+        print(f"Open Buy index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
+        print(f"Current money {money}, with the profit for the deal: {profit}")
         return (money, profit, index)
 
 
