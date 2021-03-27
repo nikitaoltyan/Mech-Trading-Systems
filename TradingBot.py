@@ -13,6 +13,7 @@ class TradingBot:
         self.levels = levels()
         self.sup_arr = [index[0] for index in self.levels.find_support(data)]
         self.res_arr = [index[0] for index in self.levels.find_resistance(data)]
+        self.commission = 0.003 #in %
 
         trendsBuy = find_rising_trend_lines(data, 4, 5)
         indexesBuy = self.findOpenBuyPositionIndexes(trendsBuy)
@@ -98,13 +99,15 @@ class TradingBot:
         index = openIndex
         openPrice = self.close[openIndex]
         sharesBought = money // openPrice
+        commission = sharesBought * openPrice * self.commission
         rest = money - (openPrice * sharesBought)
         while (openPrice/self.close[index] < (1+alpha)) and (openPrice/self.close[index] > (1-beta)):
             if lenth-1 > index:
                 index += 1
             else:
                 break
-        profit = round(sharesBought*openPrice - sharesBought*self.close[index], 2)
+        commission += sharesBought * self.close[index] * self.commission
+        profit = round(sharesBought*openPrice - sharesBought*self.close[index] - commission, 2)
         money = profit + money + rest
         return (money, profit, index)
 
@@ -116,13 +119,16 @@ class TradingBot:
         index = openIndex
         openPrice = self.close[openIndex]
         sharesBought = money // openPrice
+        commission = sharesBought * openPrice * self.commission
         rest = money - (openPrice * sharesBought)
         while (openPrice/self.close[index] > (1-alpha)) and (openPrice/self.close[index] < (1+beta)):
             if lenth-1 > index:
                 index += 1
             else:
                 break
-        profit = round(sharesBought*self.close[index] - sharesBought*openPrice, 2)
+
+        commission += sharesBought * self.close[index] * self.commission
+        profit = round(sharesBought*self.close[index] - sharesBought*openPrice - commission, 2)
         money = profit + money + rest
         return (money, profit, index)
 
