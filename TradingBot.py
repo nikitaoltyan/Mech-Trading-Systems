@@ -99,21 +99,21 @@ class TradingBot:
         index = openIndex
         openPrice = self.close[openIndex]
         sharesBought = money // openPrice
-        commission = sharesBought * openPrice * self.commission
+        commission = round(sharesBought * openPrice * self.commission, 5)
         rest = money - (openPrice * sharesBought)
         while (openPrice/self.close[index] < (1+alpha)) and (openPrice/self.close[index] > (1-beta)):
             if lenth-1 > index:
                 index += 1
             else:
                 break
-        commission += sharesBought * self.close[index] * self.commission
+        commission += round(sharesBought * self.close[index] * self.commission, 5)
         profit = round(sharesBought*openPrice - sharesBought*self.close[index] - commission, 2)
-        money = profit + money + rest
+        returnMoney = profit + money + rest
         print(f"Commision: {commission}")
         print(f"Shares bought: {sharesBought}")
         print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
-        print(f"Current money {money}, with the profit for the deal: {profit}")
-        return (money, profit, index)
+        print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
+        return (returnMoney, profit, index)
 
 
     def findCloseBuyPosition(self, openIndex, money, boughtIndex, alpha, beta, lenth):
@@ -123,7 +123,7 @@ class TradingBot:
         index = openIndex
         openPrice = self.close[openIndex]
         sharesBought = money // openPrice
-        commission = sharesBought * openPrice * self.commission
+        commission = round(sharesBought * openPrice * self.commission, 5)
         rest = money - (openPrice * sharesBought)
         while (openPrice/self.close[index] > (1-alpha)) and (openPrice/self.close[index] < (1+beta)):
             if lenth-1 > index:
@@ -131,14 +131,14 @@ class TradingBot:
             else:
                 break
 
-        commission += sharesBought * self.close[index] * self.commission
+        commission += round(sharesBought * self.close[index] * self.commission, 5)
         profit = round(sharesBought*self.close[index] - sharesBought*openPrice - commission, 2)
-        money = profit + money + rest
+        returnMoney = profit + money + rest
         print(f"Commision: {commission}")
         print(f"Shares bought: {sharesBought}")
         print(f"Open Buy index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
-        print(f"Current money {money}, with the profit for the deal: {profit}")
-        return (money, profit, index)
+        print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
+        return (returnMoney, profit, index)
 
 
     def openRightPosition(self, index, position, money, curIndex, aS, bS, aB, bB):
