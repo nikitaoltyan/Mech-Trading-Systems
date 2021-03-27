@@ -107,9 +107,11 @@ class TradingBot:
             else:
                 break
         commission += sharesBought * self.close[index] * self.commission
-        print(f"Commision: {commission}")
         profit = round(sharesBought*openPrice - sharesBought*self.close[index] - commission, 2)
         money = profit + money + rest
+        print(f"Commision: {commission}")
+        print(f"Shares bought: {sharesBought}")
+        print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
         return (money, profit, index)
 
 
@@ -129,9 +131,11 @@ class TradingBot:
                 break
 
         commission += sharesBought * self.close[index] * self.commission
-        print(f"Commision: {commission}")
         profit = round(sharesBought*self.close[index] - sharesBought*openPrice - commission, 2)
         money = profit + money + rest
+        print(f"Commision: {commission}")
+        print(f"Shares bought: {sharesBought}")
+        print(f"Open Sell index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
         return (money, profit, index)
 
 
