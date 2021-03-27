@@ -120,6 +120,7 @@ class TradingBot:
         # Проверка на возможность приобрести акции (что предыдущая сделка закрыта)
         if boughtIndex > openIndex:
             return (money, 0, boughtIndex)
+        print(f"Function start money: {money}")
         index = openIndex
         openPrice = self.close[openIndex]
         sharesBought = money // openPrice
@@ -136,7 +137,7 @@ class TradingBot:
         returnMoney = profit + money + rest
         print(f"Commision: {commission}")
         print(f"Shares bought: {sharesBought}")
-        print(f"Open Buy index {openIndex} and price {openPrice}, close index {index} and price {self.close[index]}")
+        print(f"Open Buy index {openIndex} and price {openPrice}, rest {rest}, close index {index} and price {self.close[index]}")
         print(f"Current money {returnMoney}, with the profit for the deal: {profit}")
         return (returnMoney, profit, index)
 
