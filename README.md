@@ -12,10 +12,10 @@ ODA - мобильное приложение, доющие пользвател
 
 # Содержание
 
-[***Серверная часть***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Серверная часть)
-[***Торговый алгоритм***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Торговый алгоритм)
+[***Серверная часть***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Серверная-часть)
+[***Торговый алгоритм***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Торговый-алгоритм)
 [***Приложение***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Приложение)
-[***Руководство пользователя***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Руководство пользователя)
+[***Руководство пользователя***](https://github.com/nikitaoltyan/Mech-Trading-Systems#Руководство-пользователя)
 
 # Серверная часть
 
