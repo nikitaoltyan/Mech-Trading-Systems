@@ -26,7 +26,7 @@ ODA - Oltyan, Dzgoev, Ablyazova – development team.
 Для работы нашего бота необходим компьютер, который 24/7 будет работать и мониторить финансовые рынки.
 
 <p align="center">
-<img src="./assets/heroku.png">
+<img src="./assets/heroku.jpg">
 </p>
 
 В случае нашего бота, данным компьютером является сервер на сервисе heroku. Мы выбрали heroku, потому что он удобный,
