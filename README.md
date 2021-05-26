@@ -40,7 +40,7 @@ ODA - Oltyan, Dzgoev, Ablyazova – development team.
 Одновременное исполнение данных условий сигнализирует об изменении тренда вверх, после чего бот приобретает акции на все доступные средства.
 
 <p align="center">
-<img src="./assets/chart-strategy.png">
+<img src="./assets/chart_strategy.png">
 </p>
 
 
