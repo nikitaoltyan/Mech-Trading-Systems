@@ -43,9 +43,9 @@ ODA - Oltyan, Dzgoev, Ablyazova – development team.
 
 Пример работы:
 
-1. Операция получения данных происходит GET запросом по следующему url: https://oda-tool.herokuapp.com/<ticker>
+1. Операция получения данных происходит GET запросом по следующему url: https://oda-tool.herokuapp.com/{ticker}
 2. Операция визуализации происходит GET запросом по следующему url: 
-   https://oda-tool.herokuapp.com/<ticker>/dash/<Close|Open|Volume>
+   https://oda-tool.herokuapp.com/{ticker}/dash/{Close|Open|Volume}
     
 # Торговый алгоритм
 
